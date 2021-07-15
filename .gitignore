@@ -13,6 +13,7 @@ dependency-reduced-pom.xml
 *.jar
 .swp
 config/collector-config.yaml
+semgrep-results.json
 
 dotnet/server/aspnetapp/bin
 dotnet/server/aspnetapp/obj

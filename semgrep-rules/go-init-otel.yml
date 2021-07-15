@@ -1,0 +1,27 @@
+rules:
+  - id: check-exporter-init
+    languages:
+      - go
+    message: Found exporter initialization statement.
+    patterns:
+      - pattern: |
+          otlp.NewExporter(...)
+    severity: INFO
+  - id: check-oltp-tracer-set
+    languages:
+      - go
+    message: Found statement to set tracer provider.
+    patterns:
+      - pattern: |
+          otel.SetTracerProvider(...)
+    severity: INFO
+  - id: check-trace-provider-setup
+    languages:
+      - go
+    message: Found resource setting statement.
+    patterns:
+      - pattern-inside: |
+          trace.NewTracerProvider(...)
+      - pattern: |
+          trace.WithResource(...)
+    severity: INFO

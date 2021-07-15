@@ -1,0 +1,26 @@
+rules:
+  - id: java-check-trace-exporter-configured
+    languages: [java]
+    message: OTEL trace exporter configured.
+    pattern: |
+      io.opentelemetry.exporter.otlp.trace.$EXPORTER_TYPE.builder()
+    severity: INFO
+  - id: java-check-tracer-provider-configured 
+    languages: [java]
+    message: OTEL TracerProvider builder used.
+    pattern: |
+      io.opentelemetry.sdk.trace.SdkTracerProvider.builder()
+    severity: INFO
+  - id: java-check-span-creation
+    languages: [java]
+    message: Methods that propagate the tracer should contain span start and end.
+    severity: INFO
+    patterns: 
+    - pattern-inside: |
+        $RETURNTYPE $F(..., io.opentelemetry.api.trace.Tracer $TRACER, ...) {
+          ...
+        }
+    - pattern: |
+        io.opentelemetry.api.trace.Span $SPAN = $TRACER.spanBuilder("...").setSpanKind(...).startSpan(...);
+        ...
+        $SPAN.end();
