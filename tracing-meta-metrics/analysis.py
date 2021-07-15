@@ -8,11 +8,11 @@ def ParseToDict(fileName):
 def CountOccurences(results, rules):
     #if no rules are specified, we want to count occurences of all triggered rules -> get unique rule IDs
     if len(rules) == 0:
-        print('No rule specified, running analysis of all rules...')
+        #print('No rule specified, running analysis of all rules...')
         rules = getUniqueRules(results)
-    ensureKeyPrefixes(rules, "semgrep-rules.")
-    print(f'Applying analysis to {len(rules)} rules.')
-    print(rules)
+    ensureKeyPrefixes(rules, "semgrep.")
+    #print(f'Applying analysis to {len(rules)} rules.')
+    #print(rules)
     occurencesMap = {}
     #Results are keyed under "results"
     for result in results["results"]:
