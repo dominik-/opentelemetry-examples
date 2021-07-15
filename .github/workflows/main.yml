@@ -1,3 +1,5 @@
+name: observability-metrics
+
 on: [push]
 
 jobs:
@@ -8,7 +10,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Analysis
         id: run-analysis
-        uses: dominik-/observability-ci-metrics-action@v1.2
+        uses: dominik-/observability-ci-metrics-action@v1.5
         with:
           rules: 'java-check-span-creation'
       - name: Show results
