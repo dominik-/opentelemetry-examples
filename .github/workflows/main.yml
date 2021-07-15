@@ -1,0 +1,14 @@
+on: [push]
+
+jobs:
+  obs-analysis:
+    runs-on: ubuntu-latest
+    name: Example job.
+    steps:
+      - name: Analysis
+        id: run-analysis
+        uses: dominik-/observability-ci-metrics-action@v1
+        with:
+          rules: 'java-check-span-creation'
+      - name: Show results
+        run: echo "Analysis results are ${{ steps.run-analysis.outputs.analysis }}"
