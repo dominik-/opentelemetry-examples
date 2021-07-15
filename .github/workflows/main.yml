@@ -5,6 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Example job.
     steps:
+      - uses: actions/checkout@v2
       - name: Analysis
         id: run-analysis
         uses: dominik-/observability-ci-metrics-action@v1
